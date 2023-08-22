@@ -14,5 +14,6 @@ learing computer vision based on artificial intelligence
 
 1，人工智能 —— KNN算法（K近邻算法）
  
-  >第一阶段 ：一些为引导思路而出现的算法过程。 
+  >第一阶段 ：一些为引导思路而出现的算法过程。
+> 
   >第二阶段 ： 对纯数值形式的数据集的模拟
