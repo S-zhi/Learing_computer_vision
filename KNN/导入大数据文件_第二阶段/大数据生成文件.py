@@ -21,8 +21,13 @@ for _ in range(100):
     child_gender = random.choice([0, 1])
 
     # 根据父母平均身高、孩子年龄和性别生成孩子身高的简单模拟（仅用于示例，实际情况可能更复杂）
-    child_height = parent_height - 10 + (child_age / 2) + (child_gender * 5)
-
+    if child_age <= 23:
+        parent_height -= 50
+        child_height = 50 + parent_height / 20 * child_age + (child_gender * 5)
+    else:
+        parent_height -= 50
+        child_height = 50 + parent_height / 20 * 21 + (child_gender * 5)
+    parent_height += 50
     # 将生成的数据添加到数据字典中
     data['父母平均身高'].append(parent_height)
     data['孩子年龄'].append(child_age)
