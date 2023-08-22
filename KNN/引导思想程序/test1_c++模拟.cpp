@@ -3,6 +3,10 @@
 #include <cmath>
 #include <algorithm>
 
+/*
+    1.author : S_zhi 
+    2.project : test1_copy_cpp
+*/
 class KNeighborsClassifier {
 public:
     KNeighborsClassifier(int k) : k(k) {}
