@@ -10,7 +10,9 @@ data = {
 }
 
 """
-    
+    1.author : S_zhi
+    2.E-mail : feng978744573@163.com
+    3.project : 通过拟合方程生成线性的 数据类型进行KNN 的模拟操作 
 """
 #随机生成函数 
 for _ in range(100):
