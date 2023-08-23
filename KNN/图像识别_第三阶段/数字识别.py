@@ -69,15 +69,7 @@ def img2vector(filename):
 	return returnVect
 
 """
-函数说明:手写数字分类测试
-
-Parameters:
-	无
-Returns:
-	无
-
-Modify:
-	2017-03-25
+	handwritingClassTest 为主函数 完成程序的主要内容
 """
 def handwritingClassTest():
 	hwLabels = []
@@ -117,17 +109,6 @@ def handwritingClassTest():
 	print("总共错了%d个数据\n错误率为%f%%" % (errorCount, errorCount/mTest))
 
 
-"""
-函数说明:main函数
-
-Parameters:
-	无
-Returns:
-	无
-
-Modify:
-	2017-03-25
-"""
 if __name__ == '__main__':
 	start_time = time.time()
 
