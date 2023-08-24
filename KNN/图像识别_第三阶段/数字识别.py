@@ -13,6 +13,17 @@ import time
 		>train 文件 训练数据  
 		>test 文件 测试数据
 """
+
+
+
+"""
+本函数为KNN 的决策依据，移植函数
+————————————————————————————————————————
+
+我们称之为投票函数
+
+ ————————————————————————————————————————
+"""
 def classify0(inX, dataSet, labels, k):
 	#numpy函数shape[0]返回dataSet的行数
 	dataSetSize = dataSet.shape[0]
@@ -43,6 +54,9 @@ def classify0(inX, dataSet, labels, k):
 	return sortedClassCount[0][0]
 
 """
+本函数为KNN 的决策依据的构建，移植函数
+————————————————————————————————————————
+
 函数说明:将32x32的二进制图像转换为1x1024向量。
 
 Parameters:
@@ -50,8 +64,7 @@ Parameters:
 Returns:
 	returnVect - 返回的二进制图像的1x1024向量
 
-Modify:
-	2017-03-25
+ ————————————————————————————————————————
 """
 def img2vector(filename):
 	#创建1x1024零向量
@@ -70,6 +83,9 @@ def img2vector(filename):
 
 """
 	handwritingClassTest 为主函数 完成程序的主要内容
+ 	1. 第一步 ： 提取文件的类型，数量，对文件进行每个分分布处理
+  	2. 第二步 ： 完成训练集的构建
+   	3. 第三步 ： 进入预测函数
 """
 def handwritingClassTest():
 	hwLabels = []
@@ -77,31 +93,27 @@ def handwritingClassTest():
 	m = len(trainingFileList)
 
 	trainingMat = np.zeros((m, 1024))
-	#从文件名中解析出训练集的类别
+	# 第一步
 	for i in range(m):
-		#获得文件的名字
+		
 		fileNameStr = trainingFileList[i]
-		#获得分类的数字
 		classNumber = int(fileNameStr.split('_')[0])
-		#将获得的类别添加到hwLabels中
+		# 存储每个训练集文件所属于的数字
 		hwLabels.append(classNumber)
-		#将每一个文件的1x1024数据存储到trainingMat矩阵中
 		trainingMat[i,:] = img2vector('train_data/%s' % (fileNameStr))
-	#返回testDigits目录下的文件名
+		# 完成训练集的构建
+	
 	testFileList = listdir('test_data')
-	#错误检测计数
 	errorCount = 0.0
-	#测试数据的数量
 	mTest = len(testFileList)
-	#从文件中解析出测试集的类别并进行分类测试
+
 	for i in range(mTest):
-		#获得文件的名字
+		
 		fileNameStr = testFileList[i]
-		#获得分类的数字
 		classNumber = int(fileNameStr.split('_')[0])
-		#获得测试集的1x1024向量,用于训练
+		
 		vectorUnderTest = img2vector('test_data/%s' % (fileNameStr))
-		#获得预测结果
+		# 进入预测函数 
 		classifierResult = classify0(vectorUnderTest, trainingMat, hwLabels, 3)
 		print("分类返回结果为%d\t真实结果为%d" % (classifierResult, classNumber))
 		if(classifierResult != classNumber):
