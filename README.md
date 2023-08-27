@@ -24,4 +24,4 @@ learing computer vision based on artificial intelligence
 
 2. RNN算法（循环神经网络）
 
-   > 完成了真正意义上的一个大模型的训练，自动编写古诗
+> 完成了真正意义上的一个大模型的训练，自动编写古诗
