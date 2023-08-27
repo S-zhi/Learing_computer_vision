@@ -14,29 +14,33 @@ from keras.optimizers import Adam
     1. author : S_zhi 
     2. E-mail : feng978744573@163.com
     3. project : 使用RNN模型来训练一个编写故事的模型，本模型仅仅是一个简单的故事生成模型，基于Keras框架，没有输入输出。
-    4. 
+    4. 文件注释 : poetry.txt 为文件的训练的数据
     ______________________________________________________________________________
     
 """
+    # 文件的主函数 : 完成数据的训练
+class Main_code(object):
 
-class PoetryModel(object):
+
+    # 定义一个初始化函数，判断是否要进行模型的训练
     def __init__(self, config):
         self.model = None
         self.do_train = True
         self.loaded_model = False
         self.config = config
-
-        # 文件预处理
         self.word2numF, self.num2word, self.words, self.files_content = preprocess_file(self.config)
 
-        # 如果模型文件存在则直接加载模型，否则开始训练
+        # 如果模型文件存在则直接加载模型，否则开始训练(本模型训练的时候不会对之前训练的模型接着训练，训练要一次完成)
         if os.path.exists(self.config.weight_file):
+
             self.model = load_model(self.config.weight_file)
             self.model.summary()
         else:
             self.train()
         self.do_train = False
         self.loaded_model = True
+
+
 
     def build_model(self):
         '''
@@ -94,10 +98,12 @@ class PoetryModel(object):
                 sentence = sentence + next_char
             print(sentence)
 
-    def predict(self, text):
+    def predict(self, text, temperature=1.0):
         '''根据给出的文字，生成诗句'''
         if not self.loaded_model:
             return
+        # 其余部分保持不变
+
         with open(self.config.poetry_file, 'r', encoding='utf-8') as f:
             file_list = f.readlines()
         random_line = random.choice(file_list)
@@ -183,8 +189,11 @@ class PoetryModel(object):
 if __name__ == '__main__':
     from config import Config
     # 导入config类：
-    model = PoetryModel(Config)
+    model = Main_code(Config)
     while 1:
         text = "锄禾日当午"
         sentence = model.predict(text)
+        sentence_normal = model.predict(text, temperature=1.0)  # 正常风格
+        sentence_open = model.predict(text, temperature=0.5)  # 比较开放的风格
+        sentence_conservative = model.predict(text, temperature=1.5)  # 保守的风格
         print(sentence)
