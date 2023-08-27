@@ -1,12 +1,3 @@
-# *-* coding:utf-8 *-*
-'''
-@author: ioiogoo
-@date: 2018/1/31 19:30
-'''
-
-puncs = [']', '[', '（', '）', '{', '}', '：', '《', '》']
-
-
 def preprocess_file(Config):
     # 语料文本内容
     files_content = ''
