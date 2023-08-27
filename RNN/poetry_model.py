@@ -22,7 +22,7 @@ from keras.optimizers import Adam
 class Main_code(object):
 
 
-    # 定义一个初始化函数，判断是否要进行模型的训练
+    # 1.定义一个初始化函数，判断是否要进行模型的训练
     def __init__(self, config):
         self.model = None
         self.do_train = True
@@ -41,12 +41,8 @@ class Main_code(object):
             self.loaded_model = True
 
 
-
+    #2.建立RNN神经网络训练模型
     def build_model(self):
-        '''
-        建立模型
-        '''
-
         # 输入的dimension
         input_tensor = Input(shape=(self.config.max_len,))
         embedd = Embedding(len(self.num2word) + 2, 300, input_length=self.config.max_len)(input_tensor)
