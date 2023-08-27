@@ -37,8 +37,8 @@ class Main_code(object):
             self.model.summary()
         else:
             self.train()
-        self.do_train = False
-        self.loaded_model = True
+            self.do_train = False
+            self.loaded_model = True
 
 
 
