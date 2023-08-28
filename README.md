@@ -20,6 +20,7 @@ learing computer vision based on artificial intelligence
 >
   >第三阶段 ： 完成真正意义上的图像类数字识别
 >
+>
  >后记 ： 当前KNN 算法学习的知识储备已经完成，一些特殊的实践还没有完成，当我们学习完成其他的学习样例再来完成接下来的学习。
 
 2. RNN算法（循环神经网络）
